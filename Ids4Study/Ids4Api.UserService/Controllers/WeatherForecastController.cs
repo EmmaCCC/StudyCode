@@ -1,4 +1,4 @@
-﻿using Ids4.Data;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ids4Server.Controllers
+namespace Ids4Api.UserService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -18,26 +18,17 @@ namespace Ids4Server.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly GwlDbContext gwlDb;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, GwlDbContext gwlDb)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            this.gwlDb = gwlDb;
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
-            gwlDb.AppClients.Add(new AppClient()
-            {
-                ClientId = Guid.NewGuid().ToString(),
-                ClientName = "gaoxiao"
-            });
-            gwlDb.SaveChanges();
-
-            var clients = gwlDb.AppClients.ToList();
-            return Ok(clients);
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
     }
 }
