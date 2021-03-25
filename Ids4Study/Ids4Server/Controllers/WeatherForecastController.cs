@@ -29,15 +29,7 @@ namespace Ids4Server.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            gwlDb.AppClients.Add(new AppClient()
-            {
-                ClientId = Guid.NewGuid().ToString(),
-                ClientName = "gaoxiao"
-            });
-            gwlDb.SaveChanges();
-
-            var clients = gwlDb.AppClients.ToList();
-            return Ok(clients);
+            return Ok("weather");
         }
     }
 }

@@ -1,3 +1,4 @@
+using IdentityServer4.Stores;
 using Ids4.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,12 +31,17 @@ namespace Ids4Server
 
             services.AddSingleton<GwlDbContext>();
 
+            services.AddHttpContextAccessor();
+
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(Ids4MemoryDatas.GetApiResources())
                 .AddClientStore<DbClientStore>()
                 .AddSecretValidator<MySecretValidator>()
-                .AddInMemoryApiScopes(Ids4MemoryDatas.GetApiScopes());
+                .AddInMemoryApiScopes(Ids4MemoryDatas.GetApiScopes())
+                .AddResourceOwnerValidator<DbResourceOwnerPasswordValidator>()
+                .AddProfileService<MyProfileService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

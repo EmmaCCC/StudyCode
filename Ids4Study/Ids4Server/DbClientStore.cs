@@ -18,7 +18,7 @@ namespace Ids4Server
         }
         public async Task<Client> FindClientByIdAsync(string clientId)
         {
-            var client = gwlDb.AppClients.FirstOrDefault();
+            var client = gwlDb.AppClients.FirstOrDefault(a => a.ClientId == clientId);
             await Task.CompletedTask;
             if (client != null)
             {
@@ -26,9 +26,9 @@ namespace Ids4Server
                 {
                     ClientId = client.ClientId,
                     ClientName = client.ClientName,
-                    ClientSecrets = new[] { new Secret("123") },
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = new[] { "UserApi" }
+                    ClientSecrets = new[] { new Secret(client.Secret.Sha256()) },
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+                    AllowedScopes = client.AllowedScopes.Split(",")
                 };
             }
             return null;

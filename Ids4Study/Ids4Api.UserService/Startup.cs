@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,10 +29,10 @@ namespace Ids4Api.UserService
         {
             services.AddControllers();
             services.AddAuthorization();
-            services.AddAuthentication("Bearer")
-                     .AddJwtBearer("Bearer", options =>
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                     .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                      {
-                         options.Authority = "https://localhost:44331";
+                         options.Authority = "https://localhost:5001";
 
                          options.TokenValidationParameters = new TokenValidationParameters
                          {
