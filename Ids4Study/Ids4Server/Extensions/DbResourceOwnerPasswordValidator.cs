@@ -28,6 +28,7 @@ namespace Ids4Server.Extensions
             var username = context.UserName;
             var password = context.Password;
 
+            //加验证码 验证
             var user = gwlDb.Users.FirstOrDefault(a => a.UserName == username && a.Password == password);
             if (user == null)
             {

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static IdentityModel.OidcConstants;
 
 namespace Ids4Server.Extensions
 {
@@ -26,13 +27,18 @@ namespace Ids4Server.Extensions
             list.Add(CustomGrantTypes.Sms);
             if (client != null)
             {
+
+                var scopes = client.AllowedScopes.Split(",").ToList();
+                scopes.Add(StandardScopes.OfflineAccess);
+
                 return new Client()
                 {
                     ClientId = client.ClientId,
                     ClientName = client.ClientName,
                     ClientSecrets = new[] { new Secret(client.Secret.Sha256()) },
                     AllowedGrantTypes = list,
-                    AllowedScopes = client.AllowedScopes.Split(",")
+                    AllowOfflineAccess = true,
+                    AllowedScopes = scopes
                 };
             }
             return null;
