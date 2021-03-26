@@ -1,5 +1,6 @@
 using IdentityServer4.Stores;
 using Ids4.Data;
+using Ids4Server.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,7 +41,9 @@ namespace Ids4Server
                 .AddSecretValidator<MySecretValidator>()
                 .AddInMemoryApiScopes(Ids4MemoryDatas.GetApiScopes())
                 .AddResourceOwnerValidator<DbResourceOwnerPasswordValidator>()
-                .AddProfileService<MyProfileService>();
+                .AddProfileService<MyProfileService>()
+                .AddExtensionGrantValidator<WeChatLoginGrantValidator>()
+                .AddExtensionGrantValidator<SmsLoginGrantValidator>();
 
         }
 

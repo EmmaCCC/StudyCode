@@ -7,7 +7,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Ids4Server
+namespace Ids4Server.Extensions
 {
     public class DbResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
@@ -22,7 +22,9 @@ namespace Ids4Server
         }
         public Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
+
             var httpContext = httpContextAccessor.HttpContext;
+
             var username = context.UserName;
             var password = context.Password;
 
@@ -45,7 +47,7 @@ namespace Ids4Server
                     new Claim("AccountType","College"),
                     new Claim("AccountType2","Teacher"),
                 };
-                
+
                 // 验证账号
                 context.Result = new GrantValidationResult
                 (

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ids4Server
+namespace Ids4Server.Extensions
 {
     public class MyProfileService : IProfileService
     {

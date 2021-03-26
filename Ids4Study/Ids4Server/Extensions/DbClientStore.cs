@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ids4Server
+namespace Ids4Server.Extensions
 {
     public class DbClientStore : IClientStore
     {
@@ -20,6 +20,10 @@ namespace Ids4Server
         {
             var client = gwlDb.AppClients.FirstOrDefault(a => a.ClientId == clientId);
             await Task.CompletedTask;
+            var list = new List<string>();
+            //list.AddRange(GrantTypes.ResourceOwnerPasswordAndClientCredentials);
+            list.Add(CustomGrantTypes.WeChat);
+            list.Add(CustomGrantTypes.Sms);
             if (client != null)
             {
                 return new Client()
@@ -27,7 +31,7 @@ namespace Ids4Server
                     ClientId = client.ClientId,
                     ClientName = client.ClientName,
                     ClientSecrets = new[] { new Secret(client.Secret.Sha256()) },
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPasswordAndClientCredentials,
+                    AllowedGrantTypes = list,
                     AllowedScopes = client.AllowedScopes.Split(",")
                 };
             }
