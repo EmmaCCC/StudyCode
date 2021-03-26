@@ -39,6 +39,9 @@ namespace Ids4.Data.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnType("bit");
 
+                    b.Property<string>("GrantTypes")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Secret")
                         .HasColumnType("nvarchar(max)");
 

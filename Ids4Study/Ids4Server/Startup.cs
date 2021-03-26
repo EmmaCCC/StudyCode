@@ -28,13 +28,17 @@ namespace Ids4Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+
+            services.AddControllersWithViews();
 
             services.AddSingleton<GwlDbContext>();
 
             services.AddHttpContextAccessor();
 
-            services.AddIdentityServer()
+            services.AddIdentityServer(opts =>
+            {
+                
+            })
                 .AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(Ids4MemoryDatas.GetApiResources())
                 .AddClientStore<DbClientStore>()
@@ -56,15 +60,18 @@ namespace Ids4Server
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseIdentityServer();
 
             app.UseRouting();
-           
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

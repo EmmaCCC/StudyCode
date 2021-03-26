@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">请登录</h1>
+    <button id="btn">第三方登录</button>
+</div>
+
+@section Scripts{
+
+<script>
+
+    $("#btn").click(function () {
+        window.location.href = 'https://localhost:5001/connect/authorize?client_id=9420bb7d-4001-4628-b720-4cb72f16b249&redirect_uri=https%3A%2F%2Fwww.baidu.com&response_type=code&scope=api&state=123'
+    })
+    
+
+</script>
+
+}

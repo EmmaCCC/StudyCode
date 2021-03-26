@@ -21,24 +21,25 @@ namespace Ids4Server.Extensions
         {
             var client = gwlDb.AppClients.FirstOrDefault(a => a.ClientId == clientId);
             await Task.CompletedTask;
-            var list = new List<string>();
-            //list.AddRange(GrantTypes.ResourceOwnerPasswordAndClientCredentials);
-            list.Add(CustomGrantTypes.WeChat);
-            list.Add(CustomGrantTypes.Sms);
+
             if (client != null)
             {
 
                 var scopes = client.AllowedScopes.Split(",").ToList();
                 scopes.Add(StandardScopes.OfflineAccess);
 
+                var grantTypes = client.GrantTypes.Split(",").ToList();
+
                 return new Client()
                 {
                     ClientId = client.ClientId,
                     ClientName = client.ClientName,
                     ClientSecrets = new[] { new Secret(client.Secret.Sha256()) },
-                    AllowedGrantTypes = list,
+                    AllowedGrantTypes = grantTypes,
                     AllowOfflineAccess = true,
-                    AllowedScopes = scopes
+                    AllowedScopes = scopes,
+                    AllowAccessTokensViaBrowser = true,
+                    RedirectUris = new[] { "https://www.baidu.com" }
                 };
             }
             return null;

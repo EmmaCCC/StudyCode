@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ids4Api.UserService", "Ids4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ids4.Data", "Ids4.Data\Ids4.Data.csproj", "{1C21AFD4-516B-466A-A1DC-37A285F28545}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ids4.Test", "Ids4.Test\Ids4.Test.csproj", "{D3642C71-7A87-4FB2-B4D7-9465104CAEEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ids4.Test", "Ids4.Test\Ids4.Test.csproj", "{D3642C71-7A87-4FB2-B4D7-9465104CAEEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ids4.ThirdParty", "Ids4.ThirdParty\Ids4.ThirdParty.csproj", "{0BB353DE-CDF8-4B6C-AD94-F3C2B8A92E8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D3642C71-7A87-4FB2-B4D7-9465104CAEEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3642C71-7A87-4FB2-B4D7-9465104CAEEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3642C71-7A87-4FB2-B4D7-9465104CAEEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB353DE-CDF8-4B6C-AD94-F3C2B8A92E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB353DE-CDF8-4B6C-AD94-F3C2B8A92E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB353DE-CDF8-4B6C-AD94-F3C2B8A92E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB353DE-CDF8-4B6C-AD94-F3C2B8A92E8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
