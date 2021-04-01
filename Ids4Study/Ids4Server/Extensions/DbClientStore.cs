@@ -38,7 +38,7 @@ namespace Ids4Server.Extensions
                     AllowedGrantTypes = grantTypes,
                     AllowOfflineAccess = true,
                     AllowedScopes = scopes,
-                    AllowAccessTokensViaBrowser = true,
+                    RequirePkce = false,
                     RedirectUris = new[] { "https://www.baidu.com" }
                 };
             }

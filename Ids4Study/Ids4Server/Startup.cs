@@ -37,7 +37,7 @@ namespace Ids4Server
 
             services.AddIdentityServer(opts =>
             {
-                
+
             })
                 .AddDeveloperSigningCredential()
                 .AddInMemoryApiResources(Ids4MemoryDatas.GetApiResources())

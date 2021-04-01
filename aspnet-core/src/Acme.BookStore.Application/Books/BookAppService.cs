@@ -22,7 +22,7 @@ namespace Acme.BookStore.Books
         public BookAppService(IRepository<Book, Guid> repository)
             : base(repository)
         {
-
+            
         }
     }
 }
