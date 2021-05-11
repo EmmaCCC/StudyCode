@@ -1,0 +1,24 @@
+{
+  "name": "vueadmin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --open",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^3.4.4",
+    "element-ui": "^2.13.0",
+    "vue": "^2.6.10",
+    "vue-cookies": "^1.7.0",
+    "vue-router": "^3.1.5"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
